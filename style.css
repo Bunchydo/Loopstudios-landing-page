@@ -1,3 +1,7 @@
+body {
+  height: 100vh;
+}
+
 @font-face {
   font-family: Alata;
   src: url(fonts/Alata/Alata-Regular.ttf);
@@ -6,83 +10,6 @@
 @font-face {
   font-family: Josefin_Sans;
   src: url(fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
-}
-/* 1. Use a more-intuitive box-sizing model */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* 2. Remove default margin */
-* {
-  margin: 0;
-}
-
-/* 3. Enable keyword animations */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
-}
-
-body {
-  /* 4. Add accessible line-height */
-  line-height: 1.5;
-  /* 5. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
-  font-family: Alata;
-  height: 100vh;
-}
-
-/* 6. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-/* 7. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* 8. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-/* 9. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-/*
-    10. Create a root stacking context
-  */
-#root,
-#__next {
-  isolation: isolate;
 }
 
 .hero-section {
@@ -131,7 +58,6 @@ h6 {
 .hero-section__content {
   min-height: 40%;
   width: 53%;
-  border: 2px solid white;
   color: white;
   font-size: 3.125rem;
   box-sizing: border-box;
@@ -139,6 +65,7 @@ h6 {
   padding: 3%;
   display: flex;
   align-items: center;
+  border: 2px solid white;
 }
 
 /*General Font for Titles*/
@@ -195,7 +122,7 @@ h6 {
 
 /*Our Creation Sction*/
 .creation-section {
-  height: 100vh;
+  min-height: 100vh;
   padding: 0px 10%;
   margin-bottom: 13%;
   box-sizing: border-box;
@@ -228,17 +155,18 @@ h6 {
   grid-template-rows: repeat(2, 1fr);
   height: 90%;
   gap: 2%;
+  flex-grow: 1; /* This allows the grid to grow based on the content */
 }
+
+
 /*Individual grid items*/
 .deep-earth-grid {
   background-image: url(images/desktop/image-deep-earth.jpg);
-  background-position: center;
   background-size: cover;
 }
-
 .night-arcade-grid {
   background-image: url(images/desktop/image-night-arcade.jpg);
-  background-size: 90%;
+  background-size: cover;
 }
 
 .soccer-team-vr-grid {
@@ -335,4 +263,236 @@ h6 {
   list-style: none;
   color: white;
   letter-spacing: 1.1px;
+}
+
+@media screen and (max-width: 1000px) {
+  .hero-section {
+    padding: 2% 3%;
+  }
+}
+
+@media screen and (max-width: 856px) {
+  /*Hero Section responsiveness*/
+  .nav-box__links {
+    display: none;
+  }
+  .nav-box::after {
+    content: url(images/icon-hamburger.svg);
+    display: flex;
+    align-items: center;
+  }
+  .nav-box__title {
+    width: 50%;
+    font-size: 2rem;
+  }
+  .hero-section__content {
+    width: 100%;
+  }
+
+  /*Interactive Leader Section responsiveness*/
+  .interactive-leader {
+    height: 80vh;
+    padding: 6% 3%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .interactive-image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .interactive-leader__overlay-box {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    position: relative;
+  }
+  .interactive-image {
+    height: 50%;
+    margin: 0 auto;
+  }
+  .overlay-box__title {
+    width: 100%;
+  }
+
+  .overlay-box__paragraph {
+    width: 100%;
+  }
+  /*Creation Grid*/
+  .creation-section {
+    min-height: 100vh;
+    padding: 2% 3%;
+    margin-bottom: 0%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .creation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(120px, auto);
+    height: 90%;
+  }
+  .grid-text {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 40%;
+    padding: 2%;
+  }
+
+  .grid-general {
+    font-size: 1.875rem;
+    box-sizing: border-box;
+    padding: 0% 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: white;
+    height: 100%;
+  }
+  /*Individual grid items*/
+  .deep-earth-grid {
+    background-image: url(images/mobile/image-deep-earth.jpg);
+    background-size: cover;
+    height: 120px;
+  }
+
+  .night-arcade-grid {
+    background-image: url(images/mobile/image-night-arcade.jpg);
+    background-size: cover;
+    height: 120px;
+  }
+
+  .soccer-team-vr-grid {
+    background-image: url(images/mobile/image-soccer-team.jpg);
+    background-size: cover;
+  }
+
+  .the-car-grid {
+    background-image: url(images/mobile/image-grid.jpg);
+    background-size: cover;
+  }
+
+  .from-up-above-vr-grid {
+    background-image: url(images/mobile/image-from-above.jpg);
+    background-size: cover;
+  }
+
+  .pocket-borealis-grid {
+    background-image: url(images/mobile/image-pocket-borealis.jpg);
+    background-size: cover;
+  }
+
+  .the-curiosity-grid {
+    background-image: url(images/mobile/image-curiosity.jpg);
+    background-size: cover;
+  }
+
+  .make-it-fisheye-grid {
+    background-image: url(images/mobile/image-fisheye.jpg);
+    background-size: cover;
+  }
+
+  .creation-section__see-all-button {
+    display: none;
+  }
+  .creation-grid::after {
+    content: "SEE ALL";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    height: 40%;
+    background-color: white;
+    border: 1.4px solid black;
+    letter-spacing: 3px;
+    margin: 0 auto;
+    width: 40%;
+  }
+  .footer-section-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-section-links ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px;
+    justify-content: center;
+  }
+  .footer-section__top-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1.9%;
+  }
+
+  .top-row__social-media-icons {
+    display: none;
+    justify-content: space-between;
+    width: 20%;
+    height: 15%;
+    align-items: center;
+  }
+
+  .footer-section {
+    margin-top: 30%;
+    padding: 0px 10%;
+    color: white;
+    width: 100%;
+    height: 60vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-section__top-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 1.9%;
+  }
+  .footer-section__bottom-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-section li,
+  .footer-section a {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    letter-spacing: 1.1px;
+    text-align: center;
+    line-height: 50px;
+  }
+  .show-media-icons {
+    margin-top: 5%;
+    display: flex;
+
+    width: 30%;
+  }
+  .copyright-info {
+    margin-top: 4%;
+    color: grey;
+  }
 }
