@@ -73,7 +73,31 @@ body {
   font-family: Josefin_Sans;
   font-weight: 200;
 }
+.hover {
+  position: relative;
+  display: inline-block;  /* Make sure the element behaves as a block-level element for positioning */
+  padding-bottom: 10px;
+  padding-top: 10px;
+  box-sizing: border-box;
 
+}
+
+.hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 0;  /* Initial length of the border */
+  height: 2px;  /* Height of the border */
+  background-color: white;  /* Color of the border */
+  transition: width 0.3s ease;  /* Animate the width change */
+}
+
+.hover:hover::after {
+  width: 80%;  /* Full width of the element on hover */
+
+}
 /* Interactive Leader Section*/
 .interactive-leader {
   height: 80vh;
@@ -158,7 +182,14 @@ body {
   flex-grow: 1; /* This allows the grid to grow based on the content */
 }
 
+.show-media-icons {
+display: none;
+justify-content: space-between;
+width: 20%;
+height: 15%;
+align-items: center;
 
+}
 /*Individual grid items*/
 .deep-earth-grid {
   background-image: url(images/desktop/image-deep-earth.jpg);
@@ -486,6 +517,7 @@ body {
     line-height: 50px;
   }
   .show-media-icons {
+    
     margin-top: 5%;
     display: flex;
 
